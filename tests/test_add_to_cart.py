@@ -6,13 +6,13 @@ from pages.login_page import LoginPage
 
 
 @pytest.mark.cart
-def test_add_item_to_cart(app_page):
-    login_page = LoginPage(app_page)
+def test_add_item_to_cart(navigate_base_url):
+    login_page = LoginPage(navigate_base_url)
     login_page.sign_in_standard()
 
-    inventory_page = InventoryPage(app_page)
+    inventory_page = InventoryPage(navigate_base_url)
     inventory_page.add_and_open_cart()
 
-    cart_page = CartPage(app_page)
+    cart_page = CartPage(navigate_base_url)
     cart_page.is_open()
     cart_page.has_item("Sauce Labs Backpack")

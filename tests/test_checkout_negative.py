@@ -13,18 +13,18 @@ MISSING_FIRST_NAME_ERROR = "Error: First Name is required"
 
 
 @pytest.mark.checkout_validation
-def test_checkout_from_cart_missing_first_name_shows_error(app_page):
-    login_page = LoginPage(app_page)
+def test_checkout_from_cart_missing_first_name_shows_error(navigate_base_url):
+    login_page = LoginPage(navigate_base_url)
     login_page.sign_in_standard()
 
-    inventory_page = InventoryPage(app_page)
+    inventory_page = InventoryPage(navigate_base_url)
     inventory_page.add_and_open_cart()
 
-    cart_page = CartPage(app_page)
+    cart_page = CartPage(navigate_base_url)
     cart_page.is_open()
     cart_page.checkout()
 
-    checkout_info_page = CheckoutInformationPage(app_page)
+    checkout_info_page = CheckoutInformationPage(navigate_base_url)
     checkout_info_page.is_open()
     checkout_info_page.fill_details("", CHECKOUT_LAST_NAME, CHECKOUT_POSTAL_CODE)
     checkout_info_page.next()
@@ -32,18 +32,18 @@ def test_checkout_from_cart_missing_first_name_shows_error(app_page):
 
 
 @pytest.mark.checkout_validation
-def test_checkout_from_cart_missing_postal_code_shows_error(app_page):
-    login_page = LoginPage(app_page)
+def test_checkout_from_cart_missing_postal_code_shows_error(navigate_base_url):
+    login_page = LoginPage(navigate_base_url)
     login_page.sign_in_standard()
 
-    inventory_page = InventoryPage(app_page)
+    inventory_page = InventoryPage(navigate_base_url)
     inventory_page.add_and_open_cart()
 
-    cart_page = CartPage(app_page)
+    cart_page = CartPage(navigate_base_url)
     cart_page.is_open()
     cart_page.checkout()
 
-    checkout_info_page = CheckoutInformationPage(app_page)
+    checkout_info_page = CheckoutInformationPage(navigate_base_url)
     checkout_info_page.is_open()
     checkout_info_page.fill_details("Tuhin", CHECKOUT_LAST_NAME, "")
     checkout_info_page.next()

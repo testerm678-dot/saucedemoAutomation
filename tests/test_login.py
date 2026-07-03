@@ -5,25 +5,25 @@ from pages.login_page import LoginPage
 
 
 @pytest.mark.login
-def test_login_with_standard_user(app_page):
-    login_page = LoginPage(app_page)
+def test_login_with_standard_user(navigate_base_url):
+    login_page = LoginPage(navigate_base_url)
     login_page.sign_in_standard()
 
-    inventory_page = InventoryPage(app_page)
+    inventory_page = InventoryPage(navigate_base_url)
     inventory_page.is_open()
 
 
 @pytest.mark.login
-def test_login_with_locked_out_user_shows_error(app_page):
-    login_page = LoginPage(app_page)
+def test_login_with_locked_out_user_shows_error(navigate_base_url):
+    login_page = LoginPage(navigate_base_url)
     login_page.sign_in_locked()
 
     login_page.has_error("Epic sadface: Sorry, this user has been locked out.")
 
 
 @pytest.mark.login
-def test_login_with_invalid_password_shows_error(app_page):
-    login_page = LoginPage(app_page)
+def test_login_with_invalid_password_shows_error(navigate_base_url):
+    login_page = LoginPage(navigate_base_url)
     login_page.sign_in_bad_password()
 
     login_page.has_error(
