@@ -42,3 +42,4 @@ def test_checkout_and_order_confirmation(navigate_base_url):
 
     complete_page = CheckoutCompletePage(navigate_base_url)
     complete_page.order_done()
+    assert complete_page.page.locator(complete_page.COMPLETE_HEADER).text_content() == "Thank you for your order!", "The order completion message should be displayed"

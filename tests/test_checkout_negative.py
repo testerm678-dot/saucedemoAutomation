@@ -29,6 +29,7 @@ def test_checkout_from_cart_missing_first_name_shows_error(navigate_base_url):
     checkout_info_page.fill_details("", CHECKOUT_LAST_NAME, CHECKOUT_POSTAL_CODE)
     checkout_info_page.next()
     checkout_info_page.has_error(MISSING_FIRST_NAME_ERROR)
+    assert checkout_info_page.page.locator(checkout_info_page.ERROR_BANNER).text_content() == MISSING_FIRST_NAME_ERROR, "Missing first name should show the first name error"
 
 
 @pytest.mark.checkout_validation
@@ -48,3 +49,4 @@ def test_checkout_from_cart_missing_postal_code_shows_error(navigate_base_url):
     checkout_info_page.fill_details("Tuhin", CHECKOUT_LAST_NAME, "")
     checkout_info_page.next()
     checkout_info_page.has_error(MISSING_POSTAL_CODE_ERROR)
+    assert checkout_info_page.page.locator(checkout_info_page.ERROR_BANNER).text_content() == MISSING_POSTAL_CODE_ERROR, "Missing postal code should show the postal code error"

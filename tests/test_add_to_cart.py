@@ -16,3 +16,4 @@ def test_add_item_to_cart(navigate_base_url):
     cart_page = CartPage(navigate_base_url)
     cart_page.is_open()
     cart_page.has_item("Sauce Labs Backpack")
+    assert navigate_base_url.get_by_text("Sauce Labs Backpack").is_visible(), "Sauce Labs Backpack should be visible in the cart"
